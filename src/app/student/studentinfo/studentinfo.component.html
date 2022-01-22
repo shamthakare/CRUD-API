@@ -1,0 +1,85 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+                <div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Success !</strong> record submited.
+                    <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+
+                <h2 class="bg-success text-center">Stunt Information</h2>
+                <form [formGroup]="studentinfo" (ngSubmit)="submit()">
+                    <div class="form-group">
+                        <label for="fname">Fname:-</label>
+                        <input type="text" class="form-control" formControlName="fname">
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Lname:-</label>
+                        <input type="text" class="form-control" formControlName="lname">
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">Mobile:-</label>
+                        <input type="text" class="form-control" formControlName="mobile">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:-</label>
+                        <input type="email" class="form-control" formControlName="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        Male:-<input type="radio" class="form-control" formControlName="gender" name="gender"
+                            value="male">
+                        Female:-<input type="radio" class="form-control" formControlName="gender" name="gender"
+                            value="female">
+                    </div>
+                    <div class="form-group">
+                  
+                        <ng-select [items]="imrd" class="form-control"
+                        bindLabel="classname"
+                        bindValue="classname"
+                        autofocus formControlName="class">
+                        </ng-select>
+
+
+                        
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success form-control">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-6">
+
+
+            <table border="2">
+                <tr>
+                    <th>#</th>
+                    <th>fname</th>
+                    <th>lname</th>
+                    <th>mobile</th>
+                    <th>email</th>
+                    <th>gender</th>
+                    <th>class</th>
+                    <th>opretion</th>
+                </tr>
+
+                <tr *ngFor="let item of data;let  i = index">
+                    <td>{{[i+1]}}</td>
+                    <td>{{item.fname}}</td>
+                    <td>{{item.lname}}</td>
+                    <td>{{item.mobile}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.gender}}</td>
+                    <td>{{item.class}}</td>
+                    <td><button class="btn btn-primary" (click)="del(item._id)">delete</button></td>
+                    <td><a routerLink="/studentupdate/{{item._id}}"><button class="btn btn-success ">Edit</button></a></td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>

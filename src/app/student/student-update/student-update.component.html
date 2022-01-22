@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="card">
+                <h1 class="bg-dark form-control">Update record</h1>
+                <form [formGroup]="studentupdate" (ngSubmit)="edit()">
+                    <div class="form-group">
+                        <label for="fname">Fname:-</label>
+                        <input type="text" class="form-control" formControlName="fname">
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Lname:-</label>
+                        <input type="text" class="form-control" formControlName="lname">
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">Mobile:-</label>
+                        <input type="text" class="form-control" formControlName="mobile">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:-</label>
+                        <input type="email" class="form-control" formControlName="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        Male:-<input type="radio" class="form-control" formControlName="gender" name="gender"
+                            value="male">
+                        Female:-<input type="radio" class="form-control" formControlName="gender" name="gender"
+                            value="female">
+                    </div>
+                    <div class="form-group">
+                        <ng-select [items]="imrd" class="form-control"
+                        bindLabel="classname"
+                        bindValue="classname"
+                        autofocus formControlName="class">
+                        </ng-select>
+
+                        
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success form-control [disabled]='studentupdate.invalid'">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
